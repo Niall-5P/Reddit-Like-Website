@@ -1,1 +1,1 @@
-web: gunicorn Reddit-Like-Website.wsgi
+web: gunicorn codestar.wsgi
