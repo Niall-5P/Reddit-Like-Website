@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-9)d4be_jt)(3#zt!3d7*^3k7+0h83*=*olf1b@8y)4w^*wx%2^
 SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '8000-niall5p-redditlikewebsi-sqmxcmomblc.ws.codeinstitute-ide.net',
@@ -92,9 +92,20 @@ WSGI_APPLICATION = 'codestar.wsgi.application'
 #}
 
 
+#DATABASES = {
+#    'default': dj_database_url.parse(os.environ.get("DATABASE_URL", 'postgresql://neondb_owner:gHNG1VSIYEy8@ep-proud-resonance-a2xpdg6r.eu-central-1.aws.neon.tech/dean_help_tulip_301756'))
+#}
+
+db_url = os.environ.get("DATABASE_URL")
+if not db_url:  # If DATABASE_URL is not set or empty, use the fallback
+    db_url = 'postgresql://neondb_owner:gHNG1VSIYEy8@ep-proud-resonance-a2xpdg6r.eu-central-1.aws.neon.tech/dean_help_tulip_301756'
+
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.parse(db_url)
 }
+
+
+
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
