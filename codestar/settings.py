@@ -92,20 +92,9 @@ WSGI_APPLICATION = 'codestar.wsgi.application'
 #}
 
 
-#DATABASES = {
-#    'default': dj_database_url.parse(os.environ.get("DATABASE_URL", 'postgresql://neondb_owner:gHNG1VSIYEy8@ep-proud-resonance-a2xpdg6r.eu-central-1.aws.neon.tech/dean_help_tulip_301756'))
-#}
-
-db_url = os.environ.get("DATABASE_URL")
-if not db_url:  # If DATABASE_URL is not set or empty, use the fallback
-    db_url = 'postgresql://neondb_owner:gHNG1VSIYEy8@ep-proud-resonance-a2xpdg6r.eu-central-1.aws.neon.tech/dean_help_tulip_301756'
-
 DATABASES = {
-    'default': dj_database_url.parse(db_url)
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
-
-
-
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
