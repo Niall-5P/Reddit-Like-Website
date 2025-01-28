@@ -1,0 +1,17 @@
+<!-- testimonial_list.html -->
+<h1>Testimonials</h1>
+<a href="{% url 'testimonial_create' %}">Add a testimonial</a>
+
+<ul>
+    {% for t in testimonials %}
+      <li>
+        <strong>{{ t.author }}</strong> 
+        ({{ t.created_on|date:"Y-m-d" }} - rating: {{ t.rating }}):
+        {{ t.content }}
+        {% if t.author == user %}
+          <a href="{% url 'testimonial_update' t.pk %}">Edit</a> |
+          <a href="{% url 'testimonial_delete' t.pk %}">Delete</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+</ul>
