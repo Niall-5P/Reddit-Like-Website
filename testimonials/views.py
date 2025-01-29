@@ -2,6 +2,7 @@
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import Testimonial
 from .forms import TestimonialForm
 
@@ -34,7 +35,7 @@ def testimonial_update(request, pk):
         form = TestimonialForm(request.POST, instance=testimonial)
         if form.is_valid():
             form.save()
-            messages.success(request, "Testimonial edited successfully, awaiting approval.")
+            messages.success(request, "Testimonial edited successfully.")
             return redirect('testimonial_list')
     else:
         form = TestimonialForm(instance=testimonial)
@@ -46,6 +47,6 @@ def testimonial_delete(request, pk):
     testimonial = get_object_or_404(Testimonial, pk=pk, author=request.user)
     if request.method == 'POST':
         testimonial.delete()
-        message.success(request, "Testimonial deleted successfully")
+        messages.success(request, "Testimonial deleted successfully")
         return redirect('testimonial_list')
     return render(request, 'testimonials/testimonial_confirm_delete.html', {'testimonial': testimonial})
