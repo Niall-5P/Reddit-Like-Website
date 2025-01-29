@@ -1,0 +1,7 @@
+<!-- testimonial_form.html -->
+<h1>{{ form.instance.pk|yesno:"Edit Testimonial,Add Testimonial" }}</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>

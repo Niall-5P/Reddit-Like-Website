@@ -35,7 +35,7 @@ class TestBlogViews(TestCase):
             'body': 'This is a test comment.'
         }
         response = self.client.post(reverse(
-            'post_detail', args=['blog']), post_data)
+            'post_detail', args=['blog-title']), post_data)
         self.assertEqual(response.status_code, 200)
         self.assertIn(
             b'Comment submitted and awaiting approval',
