@@ -18,6 +18,7 @@ A community-driven, news and discussion website, where users can create posts, c
 7. [Testing](#testing)
 8. [Deployment](#deployment)
 9. [Credits](#credits)
+10. [Bug](#bug)
 
 
 ---
@@ -176,3 +177,9 @@ Below is an overview of key models in the project:
    - Mentors & Peers for reviews and advice
    - Friends & Family for UI/UX testing and feedback
    - Student Support code institute.
+
+## Bug
+   - When attempting to delete a testimonial, a NameError is raised because message is undefined in testimonials/views.py. This issue occurs due to the incorrect use of message.success instead of messages.success in the testimonial_delete view.
+
+   **Unresolved bug**
+   - Some articles from 'I think therefore I blog' appeared on my site when I ran some migrations I believe. I just had to delete them.
