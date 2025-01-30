@@ -7,5 +7,7 @@ class TestimonialForm(forms.ModelForm):
     class Meta:
         model = Testimonial
         fields = ['content', 'rating']
-        # You can include 'approved' if you want users to set it, 
-        # or keep it hidden if only admins can approve
+        widgets = {
+            'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+            'rating': forms.NumberInput(attrs={'class': 'form-control', 'min': 1, 'max': 5}),  # Enforce min and max in the form
+        }
