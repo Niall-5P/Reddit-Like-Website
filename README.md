@@ -41,7 +41,7 @@ Developed throughout the **Code Institute** Full-Stack Toolkit learning path, th
 ## Live Demo / Deployment
 
 
-- Example: [Live Demo on Heroku](#) (Replace with your actual live deployment URL)
+- [https://git.heroku.com/reddit-like-site.git](#) 
 
 ---
 
