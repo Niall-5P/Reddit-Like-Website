@@ -7,6 +7,7 @@ A community-driven, news and discussion website, where users can create posts, c
 ## Table of Contents
 1. [Project Overview](#project-overview)
 2. [Live Demo / Deployment](#live-demo--deployment)
+<<<<<<< HEAD
 3. [User Experience (UX)](#user-experience-ux)
    - [User Stories](#user-stories)
    - [Site Goals](#site-goals)
@@ -19,6 +20,23 @@ A community-driven, news and discussion website, where users can create posts, c
 8. [Deployment](#deployment)
 9. [Credits](#credits)
 10. [Bug](#bug)
+=======
+3. [Design](#design)
+   - [Wireframes and Mockups](#wireframes-and-mockups)
+   - [Design Rationale](#design-rationale)
+4. [User Experience (UX)](#user-experience-ux)
+   - [User Stories](#user-stories)
+   - [Site Goals](#site-goals)
+5. [Features](#features)
+   - [Existing Features](#existing-features)
+   - [Future Features](#future-features)
+6. [Data Model](#data-model)
+7. [Technologies Used](#technologies-used)
+8. [Testing](#testing)
+9. [Deployment](#deployment)
+10. [Credits](#credits)
+11. [Bug](#bug)
+>>>>>>> 368f4ac (Added wireframes and design process to readme)
 
 
 ---
@@ -45,6 +63,30 @@ Developed throughout the **Code Institute** Full-Stack Toolkit learning path, th
 
 ---
 
+<<<<<<< HEAD
+=======
+
+## Design
+
+### Wireframes and Mockups
+Below are the wireframes created to plan the layout and user flow of the site.
+
+1. **Home Page**
+   ![Home Page Wireframe](/Users/student/Desktop/Reddit-Like-Website-main/static/images/HP.jpeg)
+
+2. **Testimonial Page**
+   ![Testimonial Wireframe](/Users/student/Desktop/Reddit-Like-Website-main/static/images/Testimonial.jpeg)
+
+3. **Register account page**
+   ![Register account](/Users/student/Desktop/Reddit-Like-Website-main/static/images/RegisterAccount.jpeg)
+
+4. **Login page**
+   ![Login page](/Users/student/Desktop/Reddit-Like-Website-main/static/images/Loginpage.jpeg)
+
+### Design Rationale
+To capture the familiar feel of a Reddit-style platform, a predominantly white background is used throughout the site. This choice helps ensure that text-based content, such as post titles and comments, remains the main focal point. A white background also mirrors Reddit’s clean, minimalist appearance, offering a sense of familiarity for users who may have experience with the original platform. Additional accent colors can be placed strategically for navigation elements or buttons, helping them stand out against the background while maintaining an overall clean and modern aesthetic.
+
+>>>>>>> 368f4ac (Added wireframes and design process to readme)
 ## User Experience (UX)
 
 ### User Stories
