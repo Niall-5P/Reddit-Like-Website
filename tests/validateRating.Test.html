@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Validate Rating Tests</title>
+    <!-- QUnit CSS from CDN -->
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/qunit/qunit-2.19.3.css"
+    />
+  </head>
+  <body>
+    <!-- QUnit will place its test results here -->
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+
+    <!-- QUnit JS from CDN -->
+    <script src="https://code.jquery.com/qunit/qunit-2.19.3.js"></script>
+
+    <!-- Your JS code that needs testing -->
+    <script src="../static/js/validateRating.js"></script>
+
+    <!-- Inline QUnit Tests -->
+    <script>
+      QUnit.test("returns true for valid rating (1-5)", function(assert) {
+        assert.ok(validateRating(3), "3 is a valid rating");
+      });
+
+      QUnit.test("returns false for rating below 1", function(assert) {
+        assert.notOk(validateRating(0), "0 is invalid");
+      });
+
+      QUnit.test("returns false for rating above 5", function(assert) {
+        assert.notOk(validateRating(6), "6 is invalid");
+      });
+    </script>
+  </body>
+</html>

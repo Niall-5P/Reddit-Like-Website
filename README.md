@@ -55,16 +55,16 @@ Developed throughout the **Code Institute** Full-Stack Toolkit learning path, th
 Below are the wireframes created to plan the layout and user flow of the site.
 
 1. **Home Page**
-   ![Home Page Wireframe](/Users/student/Desktop/Reddit-Like-Website/static/images/HomePage.png)
+   ![Home Page Wireframe](static/images/HomePage.png)
 
 2. **Testimonial Page**
-   ![Testimonial Wireframe](/Users/student/Desktop/Reddit-Like-Website-main/static/images/TestimonialPage.png)
+   ![Testimonial Wireframe](static/images/TestimonialPage.png)
 
 3. **Register account page**
-   ![Register account](/Users/student/Desktop/Reddit-Like-Website-main/static/images/RegisterAccountPage.png)
+   ![Register account](static/images/RegisterAccountPage.png)
 
 4. **Login page**
-   ![Login page](/Users/student/Desktop/Reddit-Like-Website-main/static/images/LoginPage.png)
+   ![Login page](static/images/LoginPage.png)
 
 ### Design Rationale
 To capture the familiar feel of a Reddit-style platform, a predominantly white background is used throughout the site. This choice helps ensure that text-based content, such as post titles and comments, remains the main focal point. A white background also mirrors Reddit’s clean, minimalist appearance, offering a sense of familiarity for users who may have experience with the original platform. Additional accent colors can be placed strategically for navigation elements or buttons, helping them stand out against the background while maintaining an overall clean and modern aesthetic.
@@ -177,6 +177,51 @@ Below is an overview of key models in the project:
 
 
 ## Testing
+
+
+| **Test Scenario**        | **Steps**                                                                                                                                               | **Expected Result**                                                                                   | **Actual Result**                                                      | **Pass/Fail** |
+|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|--------------|
+| **Register & Login**     | 1. Go to `/register` → enter valid details → submit.<br>2. Navigate to `/login` → enter correct username/password → submit.                             | User can register, then log in with valid credentials.                                                | Form submission succeeded; user authenticated as expected.             | Pass         |
+| **Create Post (Django)** | 1. While logged in, visit `/add-post`.<br>2. Enter a title and content → submit.                                                                     | Post is saved to the database; appears on the homepage or post detail page.                            | Successfully created a new post; verified in DB and on the homepage.   | Pass         |
+| **Add Comment (Django)** | 1. Open a post detail page.<br>2. Enter a comment in the text area → submit.                                                                             | Comment is saved to the database; displayed if auto-approved or after admin approval.                  | Comment stored properly; appears under the post.                       | Pass         |
+| **Add Testimonial**      | 1. While logged in, visit `/add-testimonial`.<br>2. Enter testimonial content (and optional rating) → submit.                                        | Testimonial is saved to the database; success message shown; may remain pending for admin approval.    | Testimonial created as expected; appears in admin for approval.        | Pass         |
+| **Responsive Layout**    | 1. Resize browser (mobile, tablet, desktop).<br>2. Check that navigation, text, and images adjust properly at different viewports.                       | The site remains legible; navbar and content adapt fluidly to screen size.                             | Layout remains consistent; no overlapping or cutoff elements.          | Pass         |
+| **Error Handling**       | 1. Submit form(s) with empty or invalid fields (e.g., no `content`).<br>2. Attempt to access protected pages (e.g., add testimonial) when logged out.     | Relevant error messages appear; restricted pages redirect to login if user is not authenticated.       | Forms display validation errors as expected; unauthorized users redirected. | Pass         |
+
+
+
+**Testimonial View Tests Overview**
+
+- **Anonymous User**  
+  Verifies that a user who is not logged in cannot access the testimonial creation page. The test expects either a redirect to the login page (`302` status) or a `403 Forbidden` response.
+
+- **Logged-In User**  
+  Confirms that a signed-in user can successfully post a new testimonial. After submitting valid data, the response should be a redirect (`302`) back to the testimonial list page, along with a success message indicating that the testimonial was created.
+
+By testing these scenarios, we ensure that:
+1. **Access Control**: Only authenticated users can create testimonials.
+2. **Form Submission**: Testimonial data is correctly handled and saved to the database, and the user is appropriately redirected afterward.
+
+
+
+### JavaScript Client-Side Testing
+
+A simple **QUnit** test was implemented to validate a rating input on the client side. The test checks:
+
+1. **Valid Rating**  
+   Ensures that calling `validateRating(3)` returns `true`, confirming that 3 is accepted as a valid rating.
+
+2. **Rating Below 1**  
+   Calls `validateRating(0)` and expects `false`, ensuring ratings lower than 1 are rejected.
+
+3. **Rating Above 5**  
+   Calls `validateRating(6)` and expects `false`, verifying ratings higher than 5 are rejected.
+
+All tests passed, confirming the function correctly enforces the **1–5 rating** constraint on the client side. The test file is accessed by simply opening the `.html` test file in a browser, which runs QUnit and displays the results.
+
+
+
+
 
    **Manual Testing**
    - Responsiveness: Verified using Chrome DevTools for various screen sizes.
