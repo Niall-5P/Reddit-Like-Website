@@ -55,7 +55,7 @@ Developed throughout the **Code Institute** Full-Stack Toolkit learning path, th
 Below are the wireframes created to plan the layout and user flow of the site.
 
 1. **Home Page**
-   ![Home Page Wireframe](/Users/student/Desktop/Reddit-Like-Website-main/static/images/HomePage.png)
+   ![Home Page Wireframe](/Users/student/Desktop/Reddit-Like-Website/static/images/HomePage.png)
 
 2. **Testimonial Page**
    ![Testimonial Wireframe](/Users/student/Desktop/Reddit-Like-Website-main/static/images/TestimonialPage.png)
