@@ -235,6 +235,54 @@ All tests passed, confirming the function correctly enforces the **1–5 rating*
 
 
 
+### Deployment Summary (Heroku)
+
+1. **Create a Heroku App**  
+   - Log in to your Heroku account and click **New → Create new app**.  
+   - Choose an app name (unique across Heroku) and region.
+
+2. **Set Up Environment Variables**  
+   - In the Heroku dashboard, go to **Settings → Reveal Config Vars**.  
+   - Add keys like `SECRET_KEY` and `DATABASE_URL` (if using Postgres).  
+   - This prevents storing sensitive info in your codebase.
+
+3. **Install Required Packages**  
+   - In your Django project’s `requirements.txt`, ensure you have:
+     - `gunicorn` (production web server)
+     - `dj-database-url` (if using Postgres)
+     - `whitenoise` (for static files)
+   - Commit and push these changes to GitHub.
+
+4. **Procfile**  
+   - In your project root, create a file named **Procfile** (no extension) containing:
+     ```bash
+     web: gunicorn your_project_name.wsgi
+     ```
+   - This tells Heroku how to run your Django app.
+
+5. **Connect GitHub to Heroku**  
+   - Under your Heroku app’s **Deploy** tab, choose **GitHub** as the deployment method.  
+   - Find your repo and connect it.  
+   - Optionally, enable automatic deploys so each push to `main` triggers a new build.
+
+6. **Static Files Setup**  
+   - Add `whitenoise.middleware.WhiteNoiseMiddleware` to `MIDDLEWARE` in `settings.py`.  
+   - Set `STATIC_ROOT` in your Django settings (already done if following best practices).  
+   - Run `collectstatic` automatically when Heroku builds by ensuring it’s set as a release step or in the default Django build process.
+
+7. **Deploy**  
+   - Click **Deploy Branch** (if manual) or push your code to GitHub (if auto-deploy).  
+   - Heroku will install dependencies, run collectstatic, and launch your app using `gunicorn`.
+
+8. **Verify**  
+   - Once the build completes, open your app’s URL on Heroku.  
+   - Confirm your site is reachable, static files load, and all env variables (like `SECRET_KEY`) are working properly.
+
+By following these steps, your Django application is hosted on **Heroku** with secure environment variables, properly managed static files, and a robust production server (`gunicorn`).
+
+
+
+
 ## Credits
    - Code Institute walkthroughs and documentation for foundational guidance.
    - Django Documentation for best practices on models, views, and deployment.
