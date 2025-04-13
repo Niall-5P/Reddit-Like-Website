@@ -55,16 +55,16 @@ Developed throughout the **Code Institute** Full-Stack Toolkit learning path, th
 Below are the wireframes created to plan the layout and user flow of the site.
 
 1. **Home Page**
-   ![Home Page Wireframe](/Users/student/Desktop/Reddit-Like-Website-main/static/images/HP.jpeg)
+   ![Home Page Wireframe](/Users/student/Desktop/Reddit-Like-Website-main/static/images/HomePage.png)
 
 2. **Testimonial Page**
-   ![Testimonial Wireframe](/Users/student/Desktop/Reddit-Like-Website-main/static/images/Testimonial.jpeg)
+   ![Testimonial Wireframe](/Users/student/Desktop/Reddit-Like-Website-main/static/images/TestimonialPage.png)
 
 3. **Register account page**
-   ![Register account](/Users/student/Desktop/Reddit-Like-Website-main/static/images/RegisterAccount.jpeg)
+   ![Register account](/Users/student/Desktop/Reddit-Like-Website-main/static/images/RegisterAccountPage.png)
 
 4. **Login page**
-   ![Login page](/Users/student/Desktop/Reddit-Like-Website-main/static/images/Loginpage.jpeg)
+   ![Login page](/Users/student/Desktop/Reddit-Like-Website-main/static/images/LoginPage.png)
 
 ### Design Rationale
 To capture the familiar feel of a Reddit-style platform, a predominantly white background is used throughout the site. This choice helps ensure that text-based content, such as post titles and comments, remains the main focal point. A white background also mirrors Reddit’s clean, minimalist appearance, offering a sense of familiarity for users who may have experience with the original platform. Additional accent colors can be placed strategically for navigation elements or buttons, helping them stand out against the background while maintaining an overall clean and modern aesthetic.
