@@ -223,11 +223,105 @@ All tests passed, confirming the function correctly enforces the **1–5 rating*
 
 
 
-   **Manual Testing**
-   - Responsiveness: Verified using Chrome DevTools for various screen sizes.
-   - User Flows: Registered a new user, created test posts, left comments, edited, and deleted them.
-   - Error Handling: Checked 404 pages, form validation, protected routes (only logged-in users can 
-     submit posts/comments).
+## Manual Testing (Expanded)
+
+Below is a more detailed breakdown of how the site was manually tested to ensure **functionality**, **usability**, and **responsiveness** across various user flows. All testing was performed locally in a development environment (VS Code + Django server) and partially on the deployed Heroku site.  
+
+### Testing Environment
+
+- **Browsers**: Chrome (desktop, mobile view), Firefox  
+- **Devices/Screen Sizes**: Desktop (1920×1080), iPad simulation (~768×1024), mobile simulation (~375×667) using Chrome DevTools  
+- **User States**: Logged out (anonymous), Logged in (regular user), Admin user  
+
+### Manual Test Cases & Scenarios
+
+1. **User Registration & Login**  
+   - **Scenario**: A new user visits `/register`, fills in username/email/password, and submits. They are then directed to `/login`, where valid credentials are entered.  
+   - **Acceptance Criteria**:  
+     - User can successfully register and see a confirmation message.  
+     - Logging in redirects to the homepage with a welcome message.  
+   - **Outcome**:  
+     - Registration displayed appropriate form errors if fields were left blank.  
+     - Valid sign-up and subsequent login were successful.  
+   - **Status**: **Pass**  
+
+2. **Post Creation (Admin-Only)**  
+   - **Scenario**: An admin user navigates to `/add-post` (or “Create Post” link) and fills out the title and content form fields.  
+   - **Acceptance Criteria**:  
+     - Only an admin user can see and access the “Add Post” feature.  
+     - Submitting valid data creates a new post displayed on the homepage or post list.  
+   - **Outcome**:  
+     - Non-admin (regular) user was redirected or received a 403/302 response when attempting the URL.  
+     - Admin successfully created a new post that immediately appeared on the homepage.  
+   - **Status**: **Pass**  
+
+3. **Commenting on Posts**  
+   - **Scenario**: A logged-in user navigates to a specific post’s detail page, enters a comment, and submits.  
+   - **Acceptance Criteria**:  
+     - Comment is saved to the database.  
+     - If auto-approved, it appears immediately; otherwise awaits admin approval.  
+   - **Outcome**:  
+     - Comment posted successfully under the post.  
+     - Invalid or blank comments triggered a form validation error.  
+   - **Status**: **Pass**  
+
+4. **Editing & Deleting Comments**  
+   - **Scenario**: A user who created a comment returns to the post detail page, clicks “edit” or “delete” on their own comment.  
+   - **Acceptance Criteria**:  
+     - Only the comment’s author sees edit/delete options.  
+     - Edits or deletions are reflected immediately after submission.  
+   - **Outcome**:  
+     - Regular user could not edit another user’s comments.  
+     - Deletions and edits worked as expected with success messages.  
+   - **Status**: **Pass**  
+
+5. **Adding Testimonials**  
+   - **Scenario**: A logged-in user navigates to `/add-testimonial`, enters testimonial text and (optionally) a rating (1–5), then submits.  
+   - **Acceptance Criteria**:  
+     - Testimonial is saved to DB with `approved=False` by default (or until admin approval).  
+     - A success message is shown, redirecting the user appropriately.  
+   - **Outcome**:  
+     - Anonymous user was blocked from creating testimonials (redirected to login).  
+     - Logged-in user submitted a testimonial successfully, appearing on the admin page to be approved.  
+   - **Status**: **Pass**  
+
+6. **Responsiveness & Layout**  
+   - **Scenario**: The tester resizes the browser to various breakpoints and also checks on mobile simulation.  
+   - **Acceptance Criteria**:  
+     - The navigation bar collapses or toggles on smaller screens.  
+     - Page content reflows without overlapping or cutoff text.  
+   - **Outcome**:  
+     - No significant layout issues were observed.  
+     - All buttons and text remain legible on mobile screens.  
+   - **Status**: **Pass**  
+
+7. **Error Handling**  
+   - **Scenario**: Submit forms with invalid data (empty fields, missing required info), and attempt to access pages that require login.  
+   - **Acceptance Criteria**:  
+     - Proper error messages appear (e.g., “This field is required.”).  
+     - Anonymous users are redirected to login if they attempt to create posts, comments, or testimonials.  
+   - **Outcome**:  
+     - Validation messages worked correctly.  
+     - Non-logged-in attempts triggered a login redirect.  
+   - **Status**: **Pass**  
+
+8. **404 & Miscellaneous Checks**  
+   - **Scenario**: Navigate to non-existent URLs (e.g., `/random-page`), or remove slug portion from a post URL.  
+   - **Acceptance Criteria**:  
+     - A custom 404 page or default Django 404 is displayed.  
+     - The site does not crash.  
+   - **Outcome**:  
+     - 404 displayed as expected; site remained stable.  
+   - **Status**: **Pass**  
+
+### Conclusions & Observations
+
+- **All Core Flows** (registration, login, post creation by admin, commenting, testimonials) functioned correctly.  
+- **Responsiveness** was consistent across tested devices and screen sizes.  
+- **Permission Checks**: Non-admin or logged-out users could not access restricted pages (e.g., create post, create testimonial).  
+- **Error Handling**: Form and page-level errors guided the user appropriately, avoiding confusion.  
+
+Overall, these **manual tests** confirm the application meets its **intended user stories** and **site goals**, providing a stable and user-friendly Reddit-like experience.
 
    **Code Validation**
    - HTML/CSS: Validated with W3C validators.
@@ -240,6 +334,7 @@ All tests passed, confirming the function correctly enforces the **1–5 rating*
 1. **Create a Heroku App**  
    - Log in to your Heroku account and click **New → Create new app**.  
    - Choose an app name (unique across Heroku) and region.
+   - Click add buildpack (determine which buildpack you will need (python etc))
 
 2. **Set Up Environment Variables**  
    - In the Heroku dashboard, go to **Settings → Reveal Config Vars**.  
